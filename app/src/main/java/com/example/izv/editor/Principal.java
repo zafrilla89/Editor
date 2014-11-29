@@ -3,12 +3,9 @@ package com.example.izv.editor;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +23,13 @@ public class Principal extends Activity {
     private EditText ettexto;
     private String ruta;
     private File f;
+
+    /***********************************************************************/
+    /*                                                                     */
+    /*                              METODOS ON                             */
+    /*                                                                     */
+    /***********************************************************************/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +46,11 @@ public class Principal extends Activity {
         }
     }
 
-
+    /***********************************************************************/
+    /*                                                                     */
+    /*                        METODOS AUXILIARES                           */
+    /*                                                                     */
+    /***********************************************************************/
 
     public void leerarchivo(){
         try {
@@ -61,18 +69,12 @@ public class Principal extends Activity {
         }
     }
 
-    public void guardar (View view){
-        String texto= ettexto.getText().toString();
-        try {
-            FileWriter fw = new FileWriter(f);
-            fw.write(texto);
-            fw.flush();
-            fw.close();
-            Toast.makeText(this,"Guardados los cambios del archivo", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
+    /***********************************************************************/
+    /*                                                                     */
+    /*                METODOS ONCLICK SOBRE LAS IMAGENES                   */
+    /*                                                                     */
+    /***********************************************************************/
 
     public void borrar (View view){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
@@ -98,4 +100,16 @@ public class Principal extends Activity {
         alertDialog.show();
     }
 
+    public void guardar (View view){
+        String texto= ettexto.getText().toString();
+        try {
+            FileWriter fw = new FileWriter(f);
+            fw.write(texto);
+            fw.flush();
+            fw.close();
+            Toast.makeText(this,"Guardados los cambios del archivo", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
